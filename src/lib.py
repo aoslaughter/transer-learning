@@ -66,23 +66,23 @@ if __name__ == "__main__":
     # Make a grid from batch
     out = torchvision.utils.make_grid(inputs)
 
-    # imshow(out, title=[class_names[x] for x in classes])
+    imshow(out, title=[class_names[x] for x in classes])
 
-    # model_ft, criterion, optimizer_ft, exp_lr_scheduler = pretrained_finetune(device)
-    # model_ft = train_model(
-    #     model_ft, criterion, optimizer_ft, exp_lr_scheduler, dataloaders, device, dataset_sizes, num_epochs=25
-    # )
+    model_ft, criterion, optimizer_ft, exp_lr_scheduler = pretrained_finetune(device)
+    model_ft = train_model(
+        model_ft, criterion, optimizer_ft, exp_lr_scheduler, dataloaders, device, dataset_sizes, num_epochs=25
+    )
 
-    # visualize_model(model_ft, dataloaders, class_names, device)
+    visualize_model(model_ft, dataloaders, class_names, device)
 
     model_conv, criterion, optimizer_conv, exp_lr_scheduler = pretrained_fixed(device)
     model_conv = train_model(
         model_conv, criterion, optimizer_conv, exp_lr_scheduler, dataloaders, device, dataset_sizes, num_epochs=25
     )
 
-    # visualize_model(model_conv, dataloaders, class_names, device)
-    # plt.ioff()
-    # plt.show()
+    visualize_model(model_conv, dataloaders, class_names, device)
+    plt.ioff()
+    plt.show()
 
     visualize_model_predictions(
         model_conv, device, data_transforms, class_names, img_path="data/hymenoptera_data/val/bees/72100438_73de9f17af.jpg"
